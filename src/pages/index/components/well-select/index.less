@@ -1,0 +1,66 @@
+@import '../../../../asset/css/theme.less';
+@import '../../../../asset/css/mixin.less';
+
+.well-select {
+  background-color: #f2f2f2;
+  .header {
+    .flex-center;
+    height: 80px;
+    .hot-image {
+      width: 33px;
+      height: 38px;
+    }
+    .hot-text {
+      margin-left: 20px;
+      font-size: 30px;
+      color: #ff9000;
+      font-weight: bold;
+    }
+  }
+  .content {
+    .flex-between;
+    flex-wrap: wrap;
+    margin: 0 20px 20px 20px;
+    .item {
+      background-color: #fff;
+      width: 350px;
+      height: 600px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      .item-image {
+        width: 350px;
+        height: 350px;
+      }
+      .item-des {
+        padding: 20px;
+        border-top: @border;
+        display: flex;
+        flex-direction: column;
+        line-height: 45px;
+        .item-name {
+          font-size: 28px;
+          color: #333333;
+        }
+        .item-subtitle {
+          font-size: 24px;
+          color: #999999;
+        }
+        .item-description {
+          font-size: 22px;
+          color: #cccccc;
+        }
+        .item-price-and-car {
+          .flex-between;
+          .item-price {
+            font-size: 28px;
+            color: #ff4646;
+          }
+          .item-car {
+            width: 60px;
+            height: 60px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -20,7 +20,7 @@ class App extends Component {
     ],
     window: {
       backgroundTextStyle: 'light',
-      navigationBarBackgroundColor: '#fff',
+      navigationBarBackgroundColor: '#2ac166',
       navigationBarTitleText: 'WeChat',
       navigationBarTextStyle: 'black'
     },
@@ -39,7 +39,7 @@ class App extends Component {
         text: "分类",
         iconPath: "./asset/images/category.png",
         selectedIconPath: "./asset/images/category_focus.png"
-      }, 
+      },
       {
         pagePath: "pages/car/index",
         text: "购物车",

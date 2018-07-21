@@ -1,5 +1,11 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Button } from '@tarojs/components'
+import { View } from '@tarojs/components'
+import Space from '../../components/space'
+import AddressAndSearch from './components/address-and-search'
+import HomeSwiper from './components/home-swiper'
+import HomeCategory from './components/home-category'
+import HomeRecommend from './components/home-recommend'
+import WellSelect from './components/well-select'
 
 import './index.less'
 
@@ -8,20 +14,30 @@ class Index extends Component {
     navigationBarTitleText: '首页'
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     console.log(this.props, nextProps)
   }
 
-  componentWillUnmount () { }
+  componentWillUnmount() {
+  }
 
-  componentDidShow () { }
+  componentDidShow() {
+  }
 
-  componentDidHide () { }
+  componentDidHide() {
+  }
 
-  render () {
+  render() {
     return (
       <View className='index'>
-        <View>Hello, World</View>
+        <AddressAndSearch />
+        <HomeSwiper />
+        <HomeCategory />
+        <Space />
+        <HomeRecommend />
+        <Space />
+        <HomeRecommend />
+        <WellSelect />
       </View>
     )
   }
