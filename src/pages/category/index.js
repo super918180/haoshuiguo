@@ -3,7 +3,7 @@ import { View, Image, Text } from '@tarojs/components'
 
 import './index.less'
 
-class Index extends Component {
+export default class Category extends Component {
   config = {
     navigationBarTitleText: '分类'
   }
@@ -173,5 +173,3 @@ class Index extends Component {
     )
   }
 }
-
-export default Index

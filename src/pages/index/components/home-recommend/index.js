@@ -46,8 +46,8 @@ export default class HomeRecommend extends Component {
         <View className='content'>
           <ScrollView className='scroll-view_H' scroll-x>
             <View className='scroll-view-container'>
-              {data.map(v => (
-                <View className='scroll-item'>
+              {data.map((v,i) => (
+                <View key={i} className='scroll-item'>
                   <Image className='item-image' src={v.image} />
                   <Text className='item-title'>{v.price}</Text>
                   <View className='item-price-and-car'>

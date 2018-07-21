@@ -1,0 +1,36 @@
+@import '../../../../asset/css/theme.less';
+@import '../../../../asset/css/mixin.less';
+
+.product-header {
+  padding: 30px;
+  .product-name {
+    font-size: 34px;
+    color: #333333;
+  }
+  .price-and-sales {
+    margin-top: 25px;
+    .flex-between;
+    .price {
+      .sale-price {
+        font-size: 40px;
+        color: #ff9000;
+      }
+      .market-price {
+        margin-left: 10px;
+        font-size: 22px;
+        color: #666666;
+        text-decoration:line-through;
+      }
+    }
+    .sales {
+      .sales-tag {
+        font-size: 24px;
+        color: #999999;
+      }
+      .sales-number {
+        font-size: 24px;
+        color: #009a44;
+      }
+    }
+  }
+}

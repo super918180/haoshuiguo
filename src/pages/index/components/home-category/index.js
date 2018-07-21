@@ -47,8 +47,8 @@ export default class HomeCategory extends Component {
     ]
     return (
       <View className='home-category'>
-        {data.map(v => (
-          <View className='item'>
+        {data.map((v,i) => (
+          <View key={i} className='item'>
             <Image className='item-image' src={v.image}></Image>
             <Text className='item-text'>{v.text}</Text>
           </View>

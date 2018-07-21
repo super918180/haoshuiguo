@@ -9,7 +9,7 @@ import WellSelect from './components/well-select'
 
 import './index.less'
 
-class Index extends Component {
+export default class Index extends Component {
   config = {
     navigationBarTitleText: '首页'
   }
@@ -42,5 +42,3 @@ class Index extends Component {
     )
   }
 }
-
-export default Index
