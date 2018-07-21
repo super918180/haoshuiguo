@@ -1,0 +1,51 @@
+@import '../../asset/css/theme.less';
+@import '../../asset/css/mixin.less';
+
+page {
+  background-color: #f5f5f5;
+}
+
+.category {
+  margin-top: 10px;
+  display: flex;
+  .category-left {
+    background-color: #ffffff;
+    width: 200px;
+    .left-item {
+      font-size: 28px;
+      height: 100px;
+      color: #4d4d4d;
+      padding-left: 40px;
+      line-height: 100px;
+      border-bottom: @border;
+      &-active {
+        color: @color-brand;
+        background-color: #f1f1f1;
+        border-left: 5px solid @color-brand;
+      }
+    }
+  }
+  .category-right {
+    margin-left: 15px;
+    width: 530px;
+    .flex-center;
+    justify-content: start;
+    flex-wrap: wrap;
+    .right-item {
+      margin: 15px 15px 0 0;
+      .flex-center;
+      width: 160px;
+      height: 170px;
+      background-color: #fff;
+      flex-direction: column;
+      .item-image {
+        width: 100px;
+        height: 100px;
+      }
+      .item-name {
+        font-size: 24px;
+        color: #8e8e8e;
+      }
+    }
+  }
+}
