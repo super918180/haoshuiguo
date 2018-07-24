@@ -5,7 +5,7 @@ import './index.less'
 
 class Index extends Component {
   config = {
-    navigationBarTitleText: '首页'
+    navigationBarTitleText: '购物车'
   }
 
   componentWillReceiveProps (nextProps) {
@@ -21,7 +21,9 @@ class Index extends Component {
   render () {
     return (
       <View className='index'>
-        <View>Hello, World</View>
+        <View className="clock-container">
+          <View className="clock-text">全场满30元包邮</View>
+        </View>
       </View>
     )
   }
