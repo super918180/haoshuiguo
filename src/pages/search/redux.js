@@ -7,7 +7,8 @@ const UPDATE = 'SEARCH_UPDATE'
 // Reducer
 const initState = {
   init: false,
-  data: {},
+  hotData: {},
+  historyData: []
 }
 
 export const search = (state = initState, action) => {
@@ -37,7 +38,7 @@ export const searchInit = (isRefresh, callback) => async (dispatch, getState) =>
   ])
   dispatch(searchUpdate({
     init: true,
-    data: searchReq.data,
+    hotData: searchReq.data,
   }))
   if (typeof callback === 'function') {
     callback()

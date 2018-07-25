@@ -9,17 +9,17 @@ const promiseFun = (method, url, params) => {
       method: method,
       url: baseUrl + url,
       data: params
-    }).then(({data}) => {
+    }).then(({ data }) => {
       if (data.code === successCode) {
-        resolve({data: data.data})
+        resolve({ data: data.data })
       } else {
-        Taro.showToast(data.msg)
-        reject({err: data.msg, code: data.code})
+        Taro.showToast({ title: data.msg, icon: 'none' })
+        reject({ err: data.msg, code: data.code })
       }
     }).catch((err) => {
       const errorMsg = JSON.stringify(err)
-      Taro.showToast(errorMsg)
-      reject({err: errorMsg})
+      Taro.showToast({ title: errorMsg, icon: 'none' })
+      reject({ err: errorMsg })
     })
   })
 }
