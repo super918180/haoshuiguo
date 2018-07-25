@@ -38,17 +38,22 @@ export default class Index extends Component {
   }
 
   render() {
-    const { swiperData, categoryData, newProductData, recommendProductData, hotProductData } = this.props
+    const { init, swiperData, categoryData, newProductData, recommendProductData, hotProductData } = this.props
     return (
       <View className='index'>
-        <AddressAndSearch />
-        <HomeSwiper data={swiperData} />
-        <HomeCategory data={categoryData} />
-        <Space />
-        <HomeRecommend title='新品上市' data={newProductData} />
-        <Space />
-        <HomeRecommend title='店长推荐' data={recommendProductData} />
-        <WellSelect data={hotProductData} />
+        {
+          init &&
+          <View>
+            <AddressAndSearch />
+            <HomeSwiper data={swiperData} />
+            <HomeCategory data={categoryData} />
+            <Space />
+            <HomeRecommend title='新品上市' data={newProductData} />
+            <Space />
+            <HomeRecommend title='店长推荐' data={recommendProductData} />
+            <WellSelect data={hotProductData} />
+          </View>
+        }
       </View>
     )
   }

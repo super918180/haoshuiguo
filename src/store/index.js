@@ -3,9 +3,11 @@ import thunkMiddleware from 'redux-thunk'
 import { createLogger } from 'redux-logger'
 
 import { home } from '../pages/index/redux'
+import { category } from '../pages/category/redux'
 
 const rootReducer = combineReducers({
   home,
+  category
 })
 
 const middlewares = [
