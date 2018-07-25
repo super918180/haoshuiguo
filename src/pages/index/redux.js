@@ -10,6 +10,7 @@ const initState = {
   categoryData: [],     //分类
   newProductData: [],   //新品上市
   recommendProductData: [],   //新品上市
+  hotProductData: [],   //热门产品
 }
 
 export const home = (state = initState, action) => {
