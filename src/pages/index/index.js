@@ -32,17 +32,17 @@ export default class Index extends Component {
   }
 
   render() {
-    const { swiperData } = this.props
+    const { swiperData, categoryData, newProductData, recommendProductData, hotProductData } = this.props
     return (
       <View className='index'>
         <AddressAndSearch />
         <HomeSwiper data={swiperData} />
-        <HomeCategory />
+        <HomeCategory data={categoryData} />
         <Space />
-        <HomeRecommend />
+        <HomeRecommend title='新品上市' data={newProductData} />
         <Space />
-        <HomeRecommend />
-        <WellSelect />
+        <HomeRecommend title='店长推荐' data={recommendProductData} />
+        <WellSelect data={hotProductData} />
       </View>
     )
   }
