@@ -4,10 +4,12 @@ import { createLogger } from 'redux-logger'
 
 import { home } from '../pages/index/redux'
 import { category } from '../pages/category/redux'
+import { search } from '../pages/search/redux'
 
 const rootReducer = combineReducers({
   home,
-  category
+  category,
+  search
 })
 
 const middlewares = [
