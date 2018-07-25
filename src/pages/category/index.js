@@ -1,7 +1,22 @@
 import Taro, { Component } from '@tarojs/taro'
+import { connect } from '@tarojs/redux'
+import { bindActionCreators } from 'redux'
 import { View, Image, Text } from '@tarojs/components'
+import { categoryInit } from './redux';
 
 import './index.less'
+
+const mapStateToProps = ({ category }) => ({
+  ...category,
+})
+const mapActionsToProps = dispatch => bindActionCreators({
+  categoryInit,
+}, dispatch)
+
+@connect(
+  mapStateToProps,
+  mapActionsToProps,
+)
 
 export default class Category extends Component {
   config = {
@@ -12,123 +27,21 @@ export default class Category extends Component {
     super(...arguments)
     this.state = {
       selectIndex: '001',
-      data: {
-        '001': {
-          name: '水果',
-          data: [
-            {
-              code: '001000',
-              name: '全部',
-              image: 'https://www.fruitzj.com/uploads/allimg/180604/4-1P6041H459.jpg'
-            },
-            {
-              code: '001000',
-              name: '橙子',
-              image: 'https://www.fruitzj.com/uploads/allimg/180604/4-1P6041H459.jpg'
-            },
-            {
-              code: '001000',
-              name: '全部',
-              image: 'https://www.fruitzj.com/uploads/allimg/180604/4-1P6041H459.jpg'
-            },
-            {
-              code: '001000',
-              name: '全部',
-              image: 'https://www.fruitzj.com/uploads/allimg/180604/4-1P6041H459.jpg'
-            },
-            {
-              code: '001000',
-              name: '全部',
-              image: 'https://www.fruitzj.com/uploads/allimg/180604/4-1P6041H459.jpg'
-            },
-            {
-              code: '001000',
-              name: '全部',
-              image: 'https://www.fruitzj.com/uploads/allimg/180604/4-1P6041H459.jpg'
-            },
-            {
-              code: '001000',
-              name: '全部',
-              image: 'https://www.fruitzj.com/uploads/allimg/180604/4-1P6041H459.jpg'
-            },
-            {
-              code: '001000',
-              name: '全部',
-              image: 'https://www.fruitzj.com/uploads/allimg/180604/4-1P6041H459.jpg'
-            },
-            {
-              code: '001000',
-              name: '全部',
-              image: 'https://www.fruitzj.com/uploads/allimg/180604/4-1P6041H459.jpg'
-            },
-            {
-              code: '001000',
-              name: '全部',
-              image: 'https://www.fruitzj.com/uploads/allimg/180604/4-1P6041H459.jpg'
-            },
-          ]
-        },
-        '002': {
-          name: '生鲜',
-          data: [
-            {
-              code: '001000',
-              name: '全部',
-              image: 'https://www.fruitzj.com/uploads/allimg/180604/4-1P6041H459.jpg'
-            },
-            {
-              code: '001000',
-              name: '海带',
-              image: 'https://www.fruitzj.com/uploads/allimg/180604/4-1P6041H459.jpg'
-            },
-            {
-              code: '001000',
-              name: '全部',
-              image: 'https://www.fruitzj.com/uploads/allimg/180604/4-1P6041H459.jpg'
-            },
-            {
-              code: '001000',
-              name: '全部',
-              image: 'https://www.fruitzj.com/uploads/allimg/180604/4-1P6041H459.jpg'
-            },
-            {
-              code: '001000',
-              name: '全部',
-              image: 'https://www.fruitzj.com/uploads/allimg/180604/4-1P6041H459.jpg'
-            },
-            {
-              code: '001000',
-              name: '全部',
-              image: 'https://www.fruitzj.com/uploads/allimg/180604/4-1P6041H459.jpg'
-            },
-            {
-              code: '001000',
-              name: '全部',
-              image: 'https://www.fruitzj.com/uploads/allimg/180604/4-1P6041H459.jpg'
-            },
-            {
-              code: '001000',
-              name: '全部',
-              image: 'https://www.fruitzj.com/uploads/allimg/180604/4-1P6041H459.jpg'
-            },
-            {
-              code: '001000',
-              name: '全部',
-              image: 'https://www.fruitzj.com/uploads/allimg/180604/4-1P6041H459.jpg'
-            },
-            {
-              code: '001000',
-              name: '全部',
-              image: 'https://www.fruitzj.com/uploads/allimg/180604/4-1P6041H459.jpg'
-            },
-          ]
-        }
-      }
     }
   }
 
   componentWillReceiveProps(nextProps) {
     console.log(this.props, nextProps)
+  }
+
+  componentDidMount() {
+    this.props.categoryInit()
+  }
+
+  onPullDownRefresh() {
+    this.props.categoryInit(true, () => {
+      Taro.stopPullDownRefresh()
+    })
   }
 
   componentWillUnmount() {
@@ -147,29 +60,36 @@ export default class Category extends Component {
   }
 
   render() {
-    const {selectIndex, data} = this.state
+    const { selectIndex } = this.state
+    const { init, data } = this.props
     return (
-      <View className='category'>
-        <View className='category-left'>
-          {Object.keys(data).map(v => (
-            <View
-              key={v}
-              className={'left-item' + (selectIndex === v ? ' left-item-active' : '')}
-              onClick={this.changeSelect.bind(this,v)}
-            >
-              {data[v].name}
+      <View>
+        {
+          init &&
+          <View className='category'>
+            <View className='category-left'>
+              {Object.keys(data).map((v, i) => (
+                <View
+                  key={i}
+                  className={'left-item' + (selectIndex === v ? ' left-item-active' : '')}
+                  onClick={this.changeSelect.bind(this, v)}
+                >
+                  {data[v].name}
+                </View>
+              ))}
             </View>
-          ))}
-        </View>
-        <View className='category-right'>
-          {data[selectIndex].data.map(v => (
-            <View className='right-item'>
-              <Image className='item-image' src={v.image} />
-              <Text className='item-name'>{v.name}</Text>
+            <View className='category-right'>
+              {data[selectIndex].data.map((v, i) => (
+                <View key={i} className='right-item'>
+                  <Image className='item-image' src={v.image} />
+                  <Text className='item-name'>{v.name}</Text>
+                </View>
+              ))}
             </View>
-          ))}
-        </View>
+          </View>
+        }
       </View>
+
     )
   }
 }

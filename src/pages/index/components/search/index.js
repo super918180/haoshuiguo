@@ -6,7 +6,7 @@ export default class Search extends Component {
   render() {
     return (
       <View className='search'>
-        <Image className='search-image' src={require('./images/search.png')}></Image>
+        <Image className='search-image' src={require('./images/search.png')} />
         <Text className='search-text'>请输入商品名称</Text>
       </View>
     )

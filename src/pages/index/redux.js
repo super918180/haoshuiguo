@@ -1,3 +1,4 @@
+import Taro from '@tarojs/taro'
 import { getHomeSwiperReq, getHomeCategoryReq, getHomeNewProductReq, getRecommendProductReq,getHotProductReq } from './api'
 
 // Actions
@@ -31,9 +32,10 @@ export const homeUpdate = params => ({
   type: UPDATE,
 })
 
-export const homeInit = (isRefresh) => async (dispatch, getState) => {
+export const homeInit = (isRefresh,callback) => async (dispatch, getState) => {
   const { init } = getState().home
   if (init && !isRefresh) return
+  Taro.showLoading({title: '加载中'})
   const [swiperReq, categoryReq, newProductReq, recommendProductReq,hotProductReq] = await Promise.all([
     getHomeSwiperReq(),
     getHomeCategoryReq(),
@@ -49,4 +51,8 @@ export const homeInit = (isRefresh) => async (dispatch, getState) => {
     recommendProductData: recommendProductReq.data,
     hotProductData:hotProductReq.data
   }))
+  if(typeof callback === 'function'){
+    callback()
+  }
+  Taro.hideLoading()
 }

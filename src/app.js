@@ -13,6 +13,7 @@ const store = configStore()
 class App extends Component {
   config = {
     pages: [
+      'pages/search/index',
       'pages/index/index',
       'pages/category/index',
       'pages/car/index',
@@ -23,48 +24,55 @@ class App extends Component {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#2ac166',
       navigationBarTitleText: 'WeChat',
-      navigationBarTextStyle: 'black'
+      navigationBarTextStyle: 'black',
+      enablePullDownRefresh: true
     },
     tabBar: {
       color: "#656565",
       selectedColor: "#2ac166",
       backgroundColor: "#ffffff",
       borderStyle: "white",
-      list: [{
-        pagePath: "pages/index/index",
-        text: "首页",
-        iconPath: "./asset/images/index.png",
-        selectedIconPath: "./asset/images/index_focus.png"
-      },{
-        pagePath: "pages/category/index",
-        text: "分类",
-        iconPath: "./asset/images/category.png",
-        selectedIconPath: "./asset/images/category_focus.png"
-      },
-      {
-        pagePath: "pages/car/index",
-        text: "购物车",
-        iconPath: "./asset/images/car.png",
-        selectedIconPath: "./asset/images/car_focus.png"
-      },
-      {
-        pagePath: "pages/user/index",
-        text: "我的",
-        iconPath: "./asset/images/user.png",
-        selectedIconPath: "./asset/images/user_focus.png"
-      }]
+      list: [
+        {
+          pagePath: "pages/index/index",
+          text: "首页",
+          iconPath: "./asset/images/index.png",
+          selectedIconPath: "./asset/images/index_focus.png"
+        },
+        {
+          pagePath: "pages/category/index",
+          text: "分类",
+          iconPath: "./asset/images/category.png",
+          selectedIconPath: "./asset/images/category_focus.png"
+        },
+        {
+          pagePath: "pages/car/index",
+          text: "购物车",
+          iconPath: "./asset/images/car.png",
+          selectedIconPath: "./asset/images/car_focus.png"
+        },
+        {
+          pagePath: "pages/user/index",
+          text: "我的",
+          iconPath: "./asset/images/user.png",
+          selectedIconPath: "./asset/images/user_focus.png"
+        }]
     }
   }
 
-  componentDidMount () {}
+  componentDidMount() {
+  }
 
-  componentDidShow () {}
+  componentDidShow() {
+  }
 
-  componentDidHide () {}
+  componentDidHide() {
+  }
 
-  componentCatchError () {}
+  componentCatchError() {
+  }
 
-  render () {
+  render() {
     return (
       <Provider store={store}>
         <Index />
