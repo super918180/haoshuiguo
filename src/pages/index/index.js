@@ -31,6 +31,12 @@ export default class Index extends Component {
     this.props.homeInit()
   }
 
+  onPullDownRefresh() {
+    this.props.homeInit(true, () => {
+      Taro.stopPullDownRefresh()
+    })
+  }
+
   render() {
     const { swiperData, categoryData, newProductData, recommendProductData, hotProductData } = this.props
     return (
