@@ -1,18 +1,97 @@
 @import '../../asset/css/theme.less';
 @import '../../asset/css/mixin.less';
-
-.clock-container{
-    width: 750px;
-	height:80px;
-    background-color:#fff5e9; 
-    flex:1;
-};
-.clock-text{          
+.index{ 
     display: flex;
-    flex-direction:row;      
-    align-content: center;
-    justify-content:center;
-}
+    flex-direction: column;        
+    .clock-container{         
+        width: 750px;
+        height:80px;
+        background-color:#fff5e9;         
+        border-top: hsl(0, 0%, 80%) 2px solid;
+        .clock-text{                    
+            color:#ff9100;
+            font-size:24px;        
+        }
+    }
+    .cart-tip-container{     
+        height:100px;   
+        width:750px;   
+        background-color:#ffffff;        
+        .cart-tip{       
+         flex-direction: row;
+         width:690px;
+         height: 50px;          
+         background-color: #e5fff0;      
+         border-radius: 20px;    
+         .cart-tip-text{        
+           font-size:20px;
+           color: #333333;
+         }
+         .cart-tip-money{
+            font-size:20px;
+            color: #72cc9a;
+         }
+     }
+     }
+     .vertical-center{
+        display:flex;
+        align-items: center;
+        justify-content: center;
+     }
+     .goods-container{
+         border-top: 20px solid #f2f2f2;   
+         border-bottom: 1px solid #f2f2f2;
+         display: flex;
+         flex-direction: row;
+         justify-content: flex-start;
+         align-items: center;
+         width: 750px; 
+         .cart-item{             
+             height:230px;
+             display: flex;     
+             padding:30px;               
+            .goods-choose{
+                margin-left: 17px;
+              }
+              .goods-image{        
+                 border:@border;         
+                 border-radius: 20px;
+                 width:170px;
+                 height:170px;      
+                 margin-left: 33px; 
+              }
+         }
+         .goods-content{
+             height:230px;
+             display: flex;
+             flex-direction: column;    
+             justify-content: space-between;     
+             padding:30px;    
+             .goods-bottom{
+                display: flex;
+                flex-direction: column;
+                .goods-spec{
+                    font-size: 23px;
+                    color: #8c8c8c;
+                }
+                .goods-price{
+                   font-size: 24px;
+                   color: #ff9000;
+                }
+             }                           
+             .goods-name{
+                 font-size: 24px;
+                 color: #323232;
+             }
+         }
+     }
+};
+
+
+
+
+
+
 
 
 
