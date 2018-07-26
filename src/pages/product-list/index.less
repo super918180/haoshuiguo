@@ -1,0 +1,66 @@
+@import '../../asset/css/theme.less';
+@import '../../asset/css/mixin.less';
+
+page {
+  background-color: #f5f5f5;
+}
+
+.product-list {
+  .list-header {
+    .flex-center;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    height: 80px;
+    background-color: #ffffff;
+    .header-item {
+      flex: 1;
+      .flex-center;
+      height: 95%;
+      .item-text {
+        width: 140px;
+        text-align: center;
+        font-size: 28px;
+        color: #333333;
+      }
+      .item-text-price {
+        .flex-center;
+        .triangle {
+          margin-left: 10px;
+          .triangle-up {
+            width: 0;
+            height: 0;
+            border-bottom: 10px solid #828282;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+          }
+          .triangle-down {
+            margin-top: 5px;
+            width: 0;
+            height: 0;
+            border-top: 10px solid #828282;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+          }
+          .active-up {
+            border-bottom: 10px solid @color-brand;
+          }
+          .active-down {
+            border-top: 10px solid @color-brand;
+          }
+        }
+      }
+    }
+    .active {
+      border-bottom: 3px solid @color-brand;
+    }
+    .split {
+      width: 1px;
+      height: 40px;
+      background-color: #c2c2c2;
+    }
+  }
+  .list-content {
+    margin-top: 100px;
+  }
+}

@@ -5,11 +5,13 @@ import { createLogger } from 'redux-logger'
 import { home } from '../pages/index/redux'
 import { category } from '../pages/category/redux'
 import { search } from '../pages/search/redux'
+import { productList } from '../pages/product-list/redux'
 
 const rootReducer = combineReducers({
   home,
   category,
-  search
+  search,
+  productList,
 })
 
 const middlewares = [

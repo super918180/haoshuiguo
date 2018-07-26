@@ -5,6 +5,7 @@ import { View, Image, Text } from '@tarojs/components'
 import { categoryInit } from './redux';
 
 import './index.less'
+import Tools from '../../utils/tools';
 
 const mapStateToProps = ({ category }) => ({
   ...category,
@@ -28,6 +29,10 @@ export default class Category extends Component {
     this.state = {
       selectIndex: '001',
     }
+  }
+
+  toProductList(name) {
+    Tools.goToProductList(name)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -80,7 +85,7 @@ export default class Category extends Component {
             </View>
             <View className='category-right'>
               {data[selectIndex].data.map((v, i) => (
-                <View key={i} className='right-item'>
+                <View key={i} className='right-item' onClick={this.toProductList.bind(this, v.name)}>
                   <Image className='item-image' src={v.image} />
                   <Text className='item-name'>{v.name}</Text>
                 </View>

@@ -10,11 +10,11 @@ const promiseFun = (method, url, params) => {
       url: baseUrl + url,
       data: params
     }).then(({ data }) => {
-      if (data.code === successCode) {
-        resolve({ data: data.data })
+      if (data.retCode === successCode) {
+        resolve({ data: data.retData })
       } else {
-        Taro.showToast({ title: data.msg, icon: 'none' })
-        reject({ err: data.msg, code: data.code })
+        Taro.showToast({ title: data.retMsg, icon: 'none' })
+        reject({ err: data.retMsg, code: data.retCode })
       }
     }).catch((err) => {
       const errorMsg = JSON.stringify(err)
