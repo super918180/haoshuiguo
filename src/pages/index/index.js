@@ -11,8 +11,9 @@ import WellSelect from './components/well-select'
 import { homeInit } from './redux'
 import './index.less'
 
-const mapStateToProps = ({ home }) => ({
+const mapStateToProps = ({ home, destination }) => ({
   ...home,
+  destination
 })
 const mapActionsToProps = dispatch => bindActionCreators({
   homeInit,
@@ -38,13 +39,13 @@ export default class Index extends Component {
   }
 
   render() {
-    const { init, swiperData, categoryData, newProductData, recommendProductData, hotProductData } = this.props
+    const { init, swiperData, categoryData, newProductData, recommendProductData, hotProductData, destination } = this.props
     return (
       <View className='index'>
         {
           init &&
           <View>
-            <AddressAndSearch />
+            <AddressAndSearch data={destination.select} />
             <HomeSwiper data={swiperData} />
             <HomeCategory data={categoryData} />
             <Space />

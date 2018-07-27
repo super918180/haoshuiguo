@@ -21,7 +21,7 @@ const mapActionsToProps = dispatch => bindActionCreators({
   mapActionsToProps,
 )
 
-export default class Cearch extends Component {
+export default class ProductList extends Component {
   config = {
     navigationBarTitleText: '商品列表'
   }

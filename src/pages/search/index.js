@@ -5,6 +5,7 @@ import { View, Image, Input, Text } from '@tarojs/components'
 import { searchInit } from './redux';
 
 import './index.less'
+import Tools from '../../utils/tools';
 
 const mapStateToProps = ({ search }) => ({
   ...search,
@@ -18,7 +19,7 @@ const mapActionsToProps = dispatch => bindActionCreators({
   mapActionsToProps,
 )
 
-export default class Cearch extends Component {
+export default class Search extends Component {
   config = {
     navigationBarTitleText: '搜索'
   }
@@ -43,9 +44,12 @@ export default class Cearch extends Component {
 
   search() {
     if (this.state.inputValue) {
+      // 存储数据
       Taro.getStorage({ key: 'searchHistory' })
         .then(res => this.saveHistory(res.data))
         .catch(() => this.saveHistory())
+      // 跳转列表页面
+      Tools.goToProductList(this.state.inputValue)
     } else {
       Taro.showToast({ title: '请输入商品名称', icon: 'none' })
     }

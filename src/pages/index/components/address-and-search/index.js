@@ -6,9 +6,10 @@ import './index.less'
 
 export default class AddressAndSearch extends Component {
   render() {
+    const { data } = this.props
     return (
       <View className='address-and-search'>
-        <AddressSelect />
+        <AddressSelect data={data} />
         <Search />
       </View>
     )
