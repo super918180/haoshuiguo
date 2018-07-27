@@ -42,23 +42,23 @@ export default class Stepper extends Component {
   }
 
   minusDisabled = () => {
-    const min = +this.props.min
-    const step = +this.props.step
+    const min = this.props.min
+    const step = this.props.step
     const currentValue = +this.state.currentValue
     return min === currentValue || (currentValue - step) < min || this.props.disabled
   }
 
   plusDisabled = () => {
-    const max = +this.props.max
-    const step = +this.props.step
-    const currentValue = +this.state.currentValue
+    const max = this.props.max
+    const step = this.props.step
+    const currentValue = this.state.currentValue + 1
     return max === currentValue || (currentValue + step) > max || this.props.disabled
   }
 
   render() {
     return (
       <View className='stepper'>
-        <View className={cls('minus', {disabled: this.minusDisabled()})}
+        <View className='minus'
           onClick={this.changeValue.bind(this, 'minus')}
         />
         <View className='input_wrapper'>
@@ -69,7 +69,9 @@ export default class Stepper extends Component {
             onChange={this.onChange}
           />
         </View>
-        <View className={cls('plus', {disabled: this.plusDisabled()})} onClick={this.changeValue.bind(this, 'plus')} />
+        <View className='plus'
+          onClick={this.changeValue.bind(this, 'plus')}
+        />
       </View>
     )
   }

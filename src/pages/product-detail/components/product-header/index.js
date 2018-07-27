@@ -4,17 +4,19 @@ import './index.less'
 
 export default class ProductHeader extends Component {
   render() {
+    const { data } = this.props
     return (
       <View className='product-header'>
-        <Text className='product-name'>进口新西兰柠檬500g/4个进口新西兰柠檬</Text>
+        <View className='product-name'>{data.name}</View>
+        <View className='product-subtitle'>{data.subtitle}</View>
         <View className='price-and-sales'>
           <View className='price'>
-            <Text className='sale-price'>￥47.90</Text>
-            <Text className='market-price'>￥78.00</Text>
+            <Text className='sale-price'>￥{data.price}</Text>
+            <Text className='market-price'>￥{data.originPrice}</Text>
           </View>
           <View className='sales'>
             <Text className='sales-tag'>已售</Text>
-            <Text className='sales-number'>1290</Text>
+            <Text className='sales-number'>{data.sealNumber}</Text>
           </View>
         </View>
       </View>
