@@ -8,6 +8,7 @@ import { search } from '../pages/search/redux'
 import { productList } from '../pages/product-list/redux'
 import { productDetail } from '../pages/product-detail/redux'
 import { destination } from '../pages/destination/redux'
+import { user } from '../pages/user/redux'
 
 const rootReducer = combineReducers({
   home,
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
   search,
   productList,
   productDetail,
-  destination
+  destination,
+  user
 })
 
 const middlewares = [
