@@ -9,6 +9,7 @@ import { productList } from '../pages/product-list/redux'
 import { productDetail } from '../pages/product-detail/redux'
 import { destination } from '../pages/destination/redux'
 import { shoppingCartList } from '../pages/car/redux'
+import { user } from '../pages/user/redux'
 
 const rootReducer = combineReducers({
   home,
@@ -17,7 +18,8 @@ const rootReducer = combineReducers({
   productList,
   productDetail,
   destination,
-  shoppingCartList
+  shoppingCartList,
+  user
 })
 
 const middlewares = [

@@ -1,30 +1,49 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Button } from '@tarojs/components'
-
+import { bindActionCreators } from 'redux'
+import { View, Image } from '@tarojs/components'
+import { connect } from '@tarojs/redux'
+import { userInit } from './redux'
 import './index.less'
 
-class Index extends Component {
+const mapStateToProps = ({ user }) => ({
+  ...user
+})
+const mapActionsToProps = dispatch => bindActionCreators({
+  userInit,
+}, dispatch)
+
+@connect(
+  mapStateToProps,
+  mapActionsToProps,
+)
+export default class Index extends Component {
   config = {
-    navigationBarTitleText: '首页'
+    navigationBarTitleText: '我的'
   }
 
-  componentWillReceiveProps (nextProps) {
-    console.log(this.props, nextProps)
+  componentDidMount() {
+    this.props.userInit()
   }
 
-  componentWillUnmount () { }
+  onPullDownRefresh() {
+    this.props.userInit(true, () => {
+      Taro.stopPullDownRefresh()
+    })
+  }
 
-  componentDidShow () { }
-
-  componentDidHide () { }
-
-  render () {
+  render() {
+    const { init } = this.props
     return (
-      <View className='index'>
-        <View>Hello, World</View>
+      <View>
+        {
+          init &&
+          <View className='user'>
+            <View className='header'>
+              <Image className='header-bg-image' src={require('./images/bg.png')} />
+            </View>
+          </View>
+        }
       </View>
     )
   }
 }
-
-export default Index
