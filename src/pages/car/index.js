@@ -3,6 +3,7 @@ import { View, Button, Text, Checkbox, Image, ScrollView } from '@tarojs/compone
 import { connect } from '@tarojs/redux'
 import { bindActionCreators } from 'redux'
 import { shoppingCartListInit } from './redux'
+import Empty from './components/empty'
 import './index.less'
 
 
@@ -41,12 +42,13 @@ export default class Index extends Component {
 
   render() {
     const { init, list, invalid } = this.props
-    return (
-      <View className='index vertical-center'>
+    return (  
+      <View className='index vertical-center'>  
+        {/* <Empty/> */}
         <View className="clock-container">
           <Image className="clock-image" src={require('./img/clock.png')} />
           <Text className="clock-text">全场满30元包邮</Text>
-        </View>
+        </View>  
         <View className="cart-tip-container vertical-center">
           <View className="cart-tip vertical-center">
             <Text className="cart-tip-text">全场满￥30.00包运费，还差￥10.00包邮</Text>
@@ -93,7 +95,7 @@ export default class Index extends Component {
                   <Text className='goods-spec'>{v.specText}</Text>
                   <View className='goods-bottom'>
                     <Text className='goods-price'>￥{v.price}</Text>
-                    <Text className='goods-count'>x{v.number}</Text>
+                    <Image style='width:21px;height:23px' src={require('./img/delete.png')} ></Image>                    
                   </View>
                 </View>
               </View>
@@ -102,24 +104,6 @@ export default class Index extends Component {
           }
         </ScrollView>
 
-
-        {/* <View className='goods-container'>
-          <View className='goods-choose'>
-            <Checkbox checked={true} />
-          </View>
-          <View className="cart-item">
-            <Image className='goods-image' src="https://www.fruitzj.com/uploads/allimg/180604/4-1P6041H459.jpg">
-            </Image>
-          </View>
-          <View className='goods-content'>
-            <Text className='goods-name'>西红柿西红柿西红柿西红柿西红柿西红柿西红柿西红柿西红柿西红柿西红柿西红柿西红柿</Text>
-            <Text className='goods-spec'>规格：2.0Kg/1箱子</Text>
-            <View className='goods-bottom'>
-              <Text className='goods-price'>￥25.00</Text>
-              <Text className='goods-count'>x10000</Text>
-            </View>
-          </View>
-        </View> */}
         <View className='botton-bar'>
           <View className='goods-choose'>
             <Checkbox checked={true} />
