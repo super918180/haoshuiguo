@@ -8,7 +8,8 @@ const UPDATE = 'SHOPPINGCART_LIST_UPDATE'
 const initState = {  
   init: false,
   //购物车列表
-  list: []
+  list: [],
+  invalid:[]
 }
 
 
@@ -41,7 +42,8 @@ export const shoppingCartListInit = () => async (dispatch, getState) => {
     //更新list
     dispatch(shoppingCartListUpdate({
       init: true,
-      list: data.data
+      list: data.data,
+      invalid:data.invalidData
     }))
     Taro.hideLoading()
   }

@@ -40,7 +40,7 @@ export default class Index extends Component {
   componentDidHide() { }
 
   render() {
-    const { init, list } = this.props    
+    const { init, list, invalid } = this.props
     return (
       <View className='index vertical-center'>
         <View className="clock-container">
@@ -73,6 +73,32 @@ export default class Index extends Component {
                 </View>
               </View>
             })
+          }
+          {
+
+            init && invalid.length > 0 && invalid.map(v => {
+              return <View className='goods-container' style='opacity:0.5'>
+                <View className='goods-choose'>
+                  <Checkbox checked={true} />
+                </View>
+                <View className="cart-item">
+                  <Image className='goods-image' src={v.image}>
+                  </Image>
+                  <View className='goods-mask'>
+                    <Text className='mask-text'>已卖光</Text>
+                  </View>
+                </View>
+                <View className='goods-content'>
+                  <Text className='goods-name'>{v.name}}</Text>
+                  <Text className='goods-spec'>{v.specText}</Text>
+                  <View className='goods-bottom'>
+                    <Text className='goods-price'>￥{v.price}</Text>
+                    <Text className='goods-count'>x{v.number}</Text>
+                  </View>
+                </View>
+              </View>
+            })
+
           }
         </ScrollView>
 
