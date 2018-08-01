@@ -1,15 +1,36 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Button, Text, Checkbox } from '@tarojs/components'
-
+import { View, Button, Text, Checkbox, Image, ScrollView } from '@tarojs/components'
+import { connect } from '@tarojs/redux'
+import { bindActionCreators } from 'redux'
+import { shoppingCartListInit } from './redux'
 import './index.less'
 
-class Index extends Component {
+
+const mapStateToProps = ({ shoppingCartList }) => ({
+  ...shoppingCartList,
+})
+
+const mapActionsToProps = dispatch => bindActionCreators({
+  shoppingCartListInit,
+}, dispatch)
+
+
+@connect(
+  mapStateToProps,
+  mapActionsToProps,
+)
+
+export default class Index extends Component {
   config = {
     navigationBarTitleText: '购物车'
   }
 
   componentWillReceiveProps(nextProps) {
     console.log(this.props, nextProps)
+  }
+
+  componentDidMount() {
+    this.props.shoppingCartListInit()
   }
 
   componentWillUnmount() { }
@@ -19,9 +40,11 @@ class Index extends Component {
   componentDidHide() { }
 
   render() {
+    const { init, list } = this.props    
     return (
       <View className='index vertical-center'>
         <View className="clock-container">
+          <Image className="clock-image" src={require('./img/clock.png')} />
           <Text className="clock-text">全场满30元包邮</Text>
         </View>
         <View className="cart-tip-container vertical-center">
@@ -29,24 +52,32 @@ class Index extends Component {
             <Text className="cart-tip-text">全场满￥30.00包运费，还差￥10.00包邮</Text>
           </View>
         </View>
-        <View className='goods-container'>
-          <View className='goods-choose'>
-            <Checkbox checked={true} />
-          </View>
-          <View className="cart-item">
-            <Image className='goods-image' src="https://www.fruitzj.com/uploads/allimg/180604/4-1P6041H459.jpg">
-            </Image>
-          </View>
-          <View className='goods-content'>
-            <Text className='goods-name'>进口牛油果500g/4个</Text>
-            <Text className='goods-spec'>规格：500g/4个</Text>
-            <View className='goods-bottom'>
-              <Text className='goods-price'>￥20.00</Text>
-              <Text className='goods-count'>x1</Text>
-            </View>
-          </View>
-        </View>
-        <View className='goods-container'>
+        <ScrollView scrollY style='height:450px'>
+          {
+            init && list.length > 0 && list.map(v => {
+              return <View className='goods-container'>
+                <View className='goods-choose'>
+                  <Checkbox checked={true} />
+                </View>
+                <View className="cart-item">
+                  <Image className='goods-image' src={v.image}>
+                  </Image>
+                </View>
+                <View className='goods-content'>
+                  <Text className='goods-name'>{v.name}}</Text>
+                  <Text className='goods-spec'>{v.specText}</Text>
+                  <View className='goods-bottom'>
+                    <Text className='goods-price'>￥{v.price}</Text>
+                    <Text className='goods-count'>x{v.number}</Text>
+                  </View>
+                </View>
+              </View>
+            })
+          }
+        </ScrollView>
+
+
+        {/* <View className='goods-container'>
           <View className='goods-choose'>
             <Checkbox checked={true} />
           </View>
@@ -62,8 +93,8 @@ class Index extends Component {
               <Text className='goods-count'>x10000</Text>
             </View>
           </View>
-        </View>
-        <View className='botton-bar'>        
+        </View> */}
+        <View className='botton-bar'>
           <View className='goods-choose'>
             <Checkbox checked={true} />
             <Text className='choose-text'>全选</Text>
@@ -76,10 +107,7 @@ class Index extends Component {
             <Text className='buy-text'>去结算</Text>
           </View>
         </View>
-
       </View>
     )
   }
 }
-
-export default Index
