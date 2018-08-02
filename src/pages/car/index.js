@@ -79,7 +79,7 @@ export default class Index extends Component {
           {
 
             init && invalid.length > 0 && invalid.map(v => {
-              return <View className='goods-container' style='background-color:rgba(255,255,255,.5)'>
+              return <View className='goods-container' style='opacity:0.5;'>
                 <View className='goods-choose'>
                   <Checkbox checked={true} />
                 </View>
