@@ -54,7 +54,7 @@ export default class Index extends Component {
             <Text className="cart-tip-text">全场满￥30.00包运费，还差￥10.00包邮</Text>
           </View>
         </View>
-        <ScrollView scrollY style='height:450px'>
+        <ScrollView>
           {
             init && list.length > 0 && list.map(v => {
               return <View className='goods-container'>
@@ -79,12 +79,12 @@ export default class Index extends Component {
           {
 
             init && invalid.length > 0 && invalid.map(v => {
-              return <View className='goods-container' style='opacity:0.5'>
+              return <View className='goods-container' style='background-color:rgba(255,255,255,.5)'>
                 <View className='goods-choose'>
                   <Checkbox checked={true} />
                 </View>
                 <View className="cart-item">
-                  <Image className='goods-image' src={v.image}>
+                  <Image className='goods-image' src={v.image}> 
                   </Image>
                   <View className='goods-mask'>
                     <Text className='mask-text'>已卖光</Text>
