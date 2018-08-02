@@ -3,7 +3,7 @@ import { View, Button, Text, Checkbox, Image, ScrollView } from '@tarojs/compone
 import { connect } from '@tarojs/redux'
 import { bindActionCreators } from 'redux'
 import { shoppingCartListInit } from './redux'
-import Empty from './components/empty'
+// import Empty from './components/empty'
 import './index.less'
 
 

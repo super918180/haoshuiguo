@@ -1,7 +1,7 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View } from '@tarojs/components'
-import AddressSelect from '../address-select'
-import Search from '../search'
+import AddressSelect from '../address-select/index'
+import Search from '../search/index'
 import './index.less'
 
 export default class AddressAndSearch extends Component {
