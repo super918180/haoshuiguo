@@ -54,7 +54,7 @@ export default class Index extends Component {
             <Text className="cart-tip-text">全场满￥30.00包运费，还差￥10.00包邮</Text>
           </View>
         </View>
-        <ScrollView>
+        <ScrollView style='padding-bottom:55px'>
           {
             init && list.length > 0 && list.map(v => {
               return <View className='goods-container'>
