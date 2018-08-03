@@ -1,8 +1,30 @@
+@import '../../asset/css/theme.less';
+@import '../../asset/css/mixin.less';
+
 .user {
   .header {
+    position: relative;
+    height: 260px;
     .header-bg-image {
       width: 750px;
-      height: 380px;
+      height: 260px;
+    }
+    .user-info {
+      .center;
+      .flex-center;
+      top: 45%;
+      flex-direction: column;
+      .avatar {
+        width: 150px;
+        height: 150px;
+        border: 10px solid #7addbd;
+        border-radius: 100%;
+      }
+      .name {
+        margin-top: 10px;
+        font-size: 32px;
+        color: #ffffff;
+      }
     }
   }
 }
