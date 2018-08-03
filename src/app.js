@@ -25,14 +25,14 @@ class App extends Component {
     ],
     window: {
       backgroundTextStyle: 'light',
-      navigationBarBackgroundColor: '#2ac166',
+      navigationBarBackgroundColor: '#009a44',
       navigationBarTitleText: 'WeChat',
-      navigationBarTextStyle: 'black',
+      navigationBarTextStyle: 'white',
       enablePullDownRefresh: true
     },
     tabBar: {
       color: "#656565",
-      selectedColor: "#2ac166",
+      selectedColor: "#009a44",
       backgroundColor: "#ffffff",
       borderStyle: "white",
       list: [

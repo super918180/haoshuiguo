@@ -11,7 +11,7 @@ export default class HomeSwiper extends Component {
           className='activity'
           circular
           indicatorDots='true'
-          indicatorActiveColor='#2ac166'
+          indicatorActiveColor='#009a44'
           autoplay='true'
           interval='5000'
           duration='500'

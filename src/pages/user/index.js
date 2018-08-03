@@ -21,7 +21,8 @@ const mapActionsToProps = dispatch => bindActionCreators({
 )
 export default class Index extends Component {
   config = {
-    navigationBarTitleText: '我的'
+    navigationBarTitleText: '我的',
+    navigationBarBackgroundColor: "#40cfa0",
   }
 
   componentDidMount() {
@@ -42,7 +43,7 @@ export default class Index extends Component {
           init &&
           <View className='user'>
             <View className='header'>
-              <Image className='header-bg-image' src={require('./images/bg.png')} />
+              <Image className='header-bg-image' src={require('./images/bg.jpg')} />
               <View className='user-info'>
                 <Image className='avatar' src='http://i1.bvimg.com/655263/a59121a555453775.pngg' />
                 <Text className='name'>宋小雨</Text>
