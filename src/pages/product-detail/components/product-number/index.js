@@ -1,6 +1,6 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
-import Stepper from '../../../../components/stepper'
+import Stepper from '../../../../components/stepper/index'
 import './index.less'
 
 export default class ProductNumber extends Component {

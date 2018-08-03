@@ -1,0 +1,96 @@
+@import '../../../../asset/css/theme.less';
+@import '../../../../asset/css/mixin.less';
+
+.order-item {
+  font-size: 26px;
+  .item-header {
+    height: 60px;
+    border-bottom: @border;
+    .flex-center;
+    padding: 0 30px;
+    justify-content: space-between;
+    .header-left {
+      color: #333333;
+    }
+    .header-right {
+      color: @color-brand;
+    }
+  }
+  .item-body {
+    height: 235px;
+    .flex-center;
+    padding: 0 30px;
+    justify-content: start;
+    border-bottom: @border;
+    .item-body-left {
+      width: 172px;
+      height: 172px;
+    }
+    .item-body-right {
+      height: 180px;
+      width: 500px;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      margin-left: 20px;
+      .name {
+        color: #383838;
+      }
+      .description {
+        margin: 30px 0;
+        font-size: 22px;
+        color: #999999;
+      }
+      .price-and-number {
+        .flex-center;
+        justify-content: space-between;
+        .price {
+          color: #383838;
+        }
+        .number {
+          color: #656565;
+        }
+      }
+    }
+  }
+  .item-footer {
+    .flex-center;
+    padding: 0 30px;
+    justify-content: space-between;
+    height: 95px;
+    .item-footer-left {
+      .flex-center;
+      .total-tag {
+        color: #959595;
+      }
+      .total-price {
+        color: @color-brand;
+      }
+    }
+    .item-footer-right {
+      font-size: 24px;
+      line-height: 50px;
+      text-align: center;
+      .item-footer-right-buttons {
+        .flex-center;
+        justify-content: end;
+        .action-hollow {
+          width: 120px;
+          height: 48px;
+          border-radius: 6px;
+          color: @color-brand;
+          border: solid 1px @color-brand;
+        }
+        .action-solid {
+          margin-left: 30px;
+          width: 120px;
+          height: 48px;
+          border-radius: 6px;
+          color: #fff;
+          background-color: @color-brand;
+          border: solid 1px @color-brand;
+        }
+      }
+    }
+  }
+}
