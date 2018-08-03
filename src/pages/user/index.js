@@ -5,6 +5,7 @@ import { connect } from '@tarojs/redux'
 import { Space } from '../../components/space'
 import { userInit } from './redux'
 import OrderBar from './components/order-bar'
+import ListItem from './components/list-item'
 import './index.less'
 
 const mapStateToProps = ({ user }) => ({
@@ -50,6 +51,7 @@ export default class Index extends Component {
             <Space />
             <OrderBar />
             <Space />
+            <ListItem />
           </View>
         }
       </View>
