@@ -9,6 +9,11 @@ const listArray = [
     url: '/pages/product-list/index?key=收藏'
   },
   {
+    title: '常用地址',
+    icon: require('./images/address.png'),
+    url: '/pages/address/index'
+  },
+  {
     title: '客服中心',
     icon: require('./images/kefu.png')
   },

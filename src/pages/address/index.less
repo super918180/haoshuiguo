@@ -31,6 +31,7 @@ page {
       padding: 0 30px;
       font-size: 26px;
       color: #323232;
+      .flex-between;
       .action-left {
         display: flex;
         align-items: center;
@@ -40,7 +41,20 @@ page {
         }
       }
       .action-right {
-
+        .flex-between;
+        .right-item {
+          .flex-between;
+          .edit-image {
+            margin-right: 20px;
+            width: 27px;
+            height: 27px;
+          }
+          .delete-image {
+            margin: 0 20px 0 60px;
+            width: 22px;
+            height: 27px;
+          }
+        }
       }
     }
   }

@@ -3,7 +3,8 @@ import { View, Image } from '@tarojs/components'
 import cls from 'classnames'
 import './index.less'
 
-export default class Checkbox extends Component {
+export default class UICheckbox extends Component {
+
   constructor() {
     super(...arguments)
     this.state = {
@@ -12,17 +13,15 @@ export default class Checkbox extends Component {
   }
 
   changeSelect() {
-    const { onChange } = this.props
     this.setState({
       isSelect: !this.state.isSelect
     }, () => (
-      onChange && onChange()
+      this.props.onChange && this.props.onChange()
     ))
   }
 
   render() {
-    const { square, children } = this.props
-    console.log(children)
+    const { square } = this.props
     let imgObj = {
       select: require('./images/select.png'),
       unselect: require('./images/unselect.png'),
@@ -35,7 +34,7 @@ export default class Checkbox extends Component {
     }
     return (
       <View className='ui-checkbox' onClick={this.changeSelect.bind(this)}>
-        <View className={cls({ square: square })}>
+        <View className={cls('box-content',{ square: square })}>
           {
             this.state.isSelect
               ?
@@ -43,7 +42,7 @@ export default class Checkbox extends Component {
               :
               <Image className='icon' src={imgObj.unselect} />
           }
-          {children}
+          {this.props.children}
         </View>
       </View>
     )

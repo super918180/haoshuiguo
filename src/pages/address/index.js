@@ -53,9 +53,12 @@ export default class Address extends Component {
   componentDidHide() {
   }
 
+  changeDefault(i) {
+    console.log(i)
+  }
+
   render() {
     const { init, config } = this.props
-    console.log(config)
     return (
       <View>
         {
@@ -74,7 +77,7 @@ export default class Address extends Component {
                   </View>
                   <View className='action'>
                     <View className='action-left'>
-                      <UICheckbox square isSelect={v.default}>
+                      <UICheckbox square isSelect={v.default} onChange={this.changeDefault.bind(this, i)}>
                         <View className={cls('select', { active: v.default })}>
                           {
                             v.default ? '默认地址' : '设为默认'
@@ -82,7 +85,16 @@ export default class Address extends Component {
                         </View>
                       </UICheckbox>
                     </View>
-                    <View className='action-right'></View>
+                    <View className='action-right'>
+                      <View className='right-item'>
+                        <Image className='edit-image' src={require('./images/edit.png')} />
+                        <View>编辑</View>
+                      </View>
+                      <View className='right-item'>
+                        <Image className='delete-image' src={require('./images/delete.png')} />
+                        <View>删除</View>
+                      </View>
+                    </View>
                   </View>
                 </View>
               ))
