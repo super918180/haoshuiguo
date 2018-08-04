@@ -57,6 +57,12 @@ export default class Address extends Component {
     console.log(i)
   }
 
+  editAddress() {
+    Taro.navigateTo({
+      url:'/pages/address-edit/index'
+    })
+  }
+
   render() {
     const { init, config } = this.props
     return (
@@ -86,7 +92,7 @@ export default class Address extends Component {
                       </UICheckbox>
                     </View>
                     <View className='action-right'>
-                      <View className='right-item'>
+                      <View className='right-item' onClick={this.editAddress}>
                         <Image className='edit-image' src={require('./images/edit.png')} />
                         <View>编辑</View>
                       </View>

@@ -16,7 +16,7 @@ export default class UICheckbox extends Component {
     this.setState({
       isSelect: !this.state.isSelect
     }, () => (
-      this.props.onChange && this.props.onChange()
+      this.props.onChange && this.props.onChange(this.state.isSelect)
     ))
   }
 
@@ -34,7 +34,7 @@ export default class UICheckbox extends Component {
     }
     return (
       <View className='ui-checkbox' onClick={this.changeSelect.bind(this)}>
-        <View className={cls('box-content',{ square: square })}>
+        <View className={cls('box-content', { square: square })}>
           {
             this.state.isSelect
               ?

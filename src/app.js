@@ -19,6 +19,7 @@ class App extends Component {
       'pages/user/index',
       'pages/order/index',
       'pages/address/index',
+      'pages/address-edit/index',
       'pages/product-list/index',
       'pages/product-detail/index',
       'pages/search/index',

@@ -1,6 +1,5 @@
 import Http from '../../utils/http'
 
-const getAddressReq = () => Http.get('/getAddress')
-
+const getAddressReq = () => Http.post('/getAddress')
 
 export { getAddressReq }
