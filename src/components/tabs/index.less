@@ -1,0 +1,22 @@
+@import '../../asset/css/theme.less';
+@import '../../asset/css/mixin.less';
+
+.tabs {
+  .flex-center;
+  width: 100%;
+  background-color: #ffffff;
+  .tabs-item {
+    flex: 1;
+    .flex-center;
+    height: 90px;
+    .item-text {
+      width: 140px;
+      text-align: center;
+      font-size: 28px;
+      color: #333333;
+    }
+  }
+  .active {
+    border-bottom: 5px solid @color-brand;
+  }
+}

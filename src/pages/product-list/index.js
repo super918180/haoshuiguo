@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 import cls from 'classnames'
 import { View } from '@tarojs/components'
 import { productListInit } from './redux';
-import ProductItem from '../components/product-item';
+import ProductItem from '../components/product-item/index';
 
 
 import './index.less'

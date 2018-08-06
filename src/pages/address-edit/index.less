@@ -1,0 +1,60 @@
+@import '../../asset/css/theme.less';
+@import '../../asset/css/mixin.less';
+
+page {
+  background-color: #f5f5f5;
+}
+
+.address-edit {
+  margin-top: 20px;
+  .address-form {
+    background-color: #fff;
+    font-size: 28px;
+    color: #656565;
+    .select-Item {
+      .flex-between;
+      height: 90px;
+      margin: 0 30px;
+      border-bottom: @border;
+      .select-right {
+        width: 16px;
+        height: 29px;
+      }
+      .form-item {
+        .flex-center;
+        justify-content: start;
+        .form-label {
+          width: 160px;
+        }
+        .form-input {
+
+        }
+        .form-select {
+
+        }
+      }
+    }
+    .textarea-item {
+      padding: 30px;
+      display: flex;
+      border-bottom: @border;
+      .form-label {
+        width: 160px;
+      }
+      .form-textarea {
+        width: 500px;
+        height: 80px;
+      }
+    }
+  }
+  .address-submit {
+    margin: 140px auto;
+    width: 700px;
+    height: 76px;
+    background-color: @color-brand;
+    border-radius: 10px;
+    color: #f8f8f8;
+    .flex-center;
+    font-size: 26px;
+  }
+}

@@ -26,11 +26,17 @@ const orderArray = [
 ]
 
 export default class OrderBar extends Component {
+  toOrderList(i) {
+    Taro.navigateTo({
+      url: `/pages/order/index?index=${i}`
+    })
+  }
+
   render() {
     return (
       <View className='order-bar'>
         {orderArray.map((v, i) => (
-          <View key={i} className='order-bar-item'>
+          <View key={i} className='order-bar-item' onClick={this.toOrderList.bind(this, i)}>
             <Image className='order-bar-image' src={v.icon} />
             <Text className='order-bar-text'>{v.title}</Text>
           </View>

@@ -1,0 +1,30 @@
+@import '../../../../asset/css/theme.less';
+@import '../../../../asset/css/mixin.less';
+
+.list-item {
+  background-color: #fff;
+  .list-item-content {
+    height: 100px;
+    padding: 0 30px;
+    .flex-center;
+    justify-content: space-between;
+    border-bottom: @border;
+    .list-item-left {
+      .flex-center;
+      .list-item-image {
+        width: 40px;
+        height: 40px;
+      }
+      .list-item-text {
+        font-size: 26px;
+        color: #2c2c2c;
+        margin-left: 30px;
+        margin-top: 5px;
+      }
+    }
+    .list-item-right {
+      width: 16px;
+      height: 29px;
+    }
+  }
+}

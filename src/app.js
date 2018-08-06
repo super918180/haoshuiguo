@@ -14,9 +14,12 @@ class App extends Component {
   config = {
     pages: [
       'pages/index/index',
-      'pages/user/index',
       'pages/category/index',
       'pages/car/index',
+      'pages/user/index',
+      'pages/order/index',
+      'pages/address/index',
+      'pages/address-edit/index',
       'pages/product-list/index',
       'pages/product-detail/index',
       'pages/search/index',
@@ -24,14 +27,14 @@ class App extends Component {
     ],
     window: {
       backgroundTextStyle: 'light',
-      navigationBarBackgroundColor: '#2ac166',
+      navigationBarBackgroundColor: '#009a44',
       navigationBarTitleText: 'WeChat',
-      navigationBarTextStyle: 'black',
+      navigationBarTextStyle: 'white',
       enablePullDownRefresh: true
     },
     tabBar: {
       color: "#656565",
-      selectedColor: "#2ac166",
+      selectedColor: "#009a44",
       backgroundColor: "#ffffff",
       borderStyle: "white",
       list: [
