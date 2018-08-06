@@ -33,7 +33,10 @@ export const shoppingCartListUpdate = params => ({
 })
 
 
-export const shoppingCartListInit = () => async (dispatch, getState) => {  
+export const shoppingCartListInit = (isRefresh) => async (dispatch, getState) => { 
+  const { init } = getState().shoppingCartList 
+  if (init && !isRefresh) return
+  Taro.showLoading({ title: '加载中' })  
   const  { data }  = await getShoppingCarts()        
   if(data.length==0){
     // 没有数据提示
