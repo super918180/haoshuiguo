@@ -10,6 +10,7 @@ export default class Stepper extends Component {
     defaultValue: 1,
     step: 1,
     disabled: false,
+    callback: f => f
   }
 
   constructor() {
@@ -27,9 +28,8 @@ export default class Stepper extends Component {
     this.setState({
       currentValue: value,
     })
-    if (typeof this.props.onChange === 'function') {
-      this.props.onChange(value)
-    }
+    this.props.onChange && this.props.onChange(value)
+
   }
 
   changeValue = (type) => {
