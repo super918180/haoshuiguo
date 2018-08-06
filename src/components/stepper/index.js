@@ -58,9 +58,7 @@ export default class Stepper extends Component {
   render() {
     return (
       <View className='stepper'>
-        <View className='minus'
-          onClick={this.changeValue.bind(this, 'minus')}
-        />
+        <View className='minus' onClick={this.changeValue.bind(this, 'minus')}>-</View>
         <View className='input_wrapper'>
           <Input
             type='number'
@@ -69,9 +67,7 @@ export default class Stepper extends Component {
             onChange={this.onChange}
           />
         </View>
-        <View className='plus'
-          onClick={this.changeValue.bind(this, 'plus')}
-        />
+        <View className='plus' onClick={this.changeValue.bind(this, 'plus')}>+</View>
       </View>
     )
   }
