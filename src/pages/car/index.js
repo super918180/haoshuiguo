@@ -57,18 +57,18 @@ export default class Index extends Component {
               </View>
               <View className="cart-tip-container vertical-center">
                 <View className="cart-tip vertical-center">
-                  <Text className="cart-tip-text">全场满￥30.00包运费，还差￥10.00包邮</Text>
+                  <View className="cart-tip-text">全场满<Text className='tip-price'>￥30.00</Text>包运费，还差<Text className='tip-price'>￥10.00</Text>包邮</View>
                 </View>
               </View>
               <ScrollView style='padding-bottom:55px'>
                 {
                   init && list.length > 0 && list.map(v => {
-                    return <View className='goods-container' onClick={this._toProductList.bind(this, v.shoppingCartId)}>
+                    return <View className='goods-container'>
                       <View className='goods-choose'>
                         <UICheckbox isSelect={true} />
                       </View>
                       <View className="cart-item">
-                        <Image className='goods-image' src={v.image}>
+                        <Image className='goods-image' src={v.image} onClick={this._toProductList.bind(this, v.shoppingCartId)}>
                         </Image>
                       </View>
                       <View className='goods-content'>
@@ -129,7 +129,7 @@ export default class Index extends Component {
   }
 
 
-  _changeGoodsValue(value) {
+  _changeGoodsValue(value) {    
     this.props.changeGoodsValue(3, value)
   }
 
