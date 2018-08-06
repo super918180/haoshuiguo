@@ -48,3 +48,13 @@ export const shoppingCartListInit = () => async (dispatch, getState) => {
     Taro.hideLoading()
   }
 }
+
+
+export const  changeGoodsValue = (id,value)=>(dispatch,getState)=>{
+      let { list } = getState().shoppingCartList
+      const newList = list.filter(v=>v.id==id).number=value
+      //更新list
+      dispatch(shoppingCartListUpdate({        
+        data:newList        
+      }))
+}

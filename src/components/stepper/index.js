@@ -21,7 +21,7 @@ export default class Stepper extends Component {
   }
 
   onChange = (event) => {
-    this.setCurrentValue(event.target.value)
+    this.setCurrentValue(event.target.value)    
   }
 
   setCurrentValue = (value) => {

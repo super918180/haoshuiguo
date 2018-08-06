@@ -1,8 +1,11 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Button, Text, Checkbox, Image, ScrollView } from '@tarojs/components'
+import { View, Button, Text, Image, ScrollView } from '@tarojs/components'
 import { connect } from '@tarojs/redux'
 import { bindActionCreators } from 'redux'
-import { shoppingCartListInit } from './redux'
+import { shoppingCartListInit, changeGoodsValue } from './redux'
+import Stepper from '../../components/stepper'
+import UICheckbox from '../../components/ui-checkbox'
+import Tools from '../../utils/tools';
 // import Empty from './components/empty'
 import './index.less'
 
@@ -13,6 +16,7 @@ const mapStateToProps = ({ shoppingCartList }) => ({
 
 const mapActionsToProps = dispatch => bindActionCreators({
   shoppingCartListInit,
+  changeGoodsValue
 }, dispatch)
 
 
@@ -42,13 +46,13 @@ export default class Index extends Component {
 
   render() {
     const { init, list, invalid } = this.props
-    return (  
-      <View className='index vertical-center'>  
+    return (
+      <View className='index vertical-center'>
         {/* <Empty/> */}
         <View className="clock-container">
           <Image className="clock-image" src={require('./img/clock.png')} />
           <Text className="clock-text">全场满30元包邮</Text>
-        </View>  
+        </View>
         <View className="cart-tip-container vertical-center">
           <View className="cart-tip vertical-center">
             <Text className="cart-tip-text">全场满￥30.00包运费，还差￥10.00包邮</Text>
@@ -57,9 +61,9 @@ export default class Index extends Component {
         <ScrollView style='padding-bottom:55px'>
           {
             init && list.length > 0 && list.map(v => {
-              return <View className='goods-container'>
+              return <View className='goods-container' onClick={this._toProductList.bind(this, v.shoppingCartId)}>
                 <View className='goods-choose'>
-                  <Checkbox checked={true} />
+                  <UICheckbox isSelect={true} />
                 </View>
                 <View className="cart-item">
                   <Image className='goods-image' src={v.image}>
@@ -70,7 +74,7 @@ export default class Index extends Component {
                   <Text className='goods-spec'>{v.specText}</Text>
                   <View className='goods-bottom'>
                     <Text className='goods-price'>￥{v.price}</Text>
-                    <Text className='goods-count'>x{v.number}</Text>
+                    <Stepper onChange={this._changeGoodsValue} />
                   </View>
                 </View>
               </View>
@@ -81,10 +85,10 @@ export default class Index extends Component {
             init && invalid.length > 0 && invalid.map(v => {
               return <View className='goods-container' style='opacity:0.5;'>
                 <View className='goods-choose'>
-                  <Checkbox checked={true} />
+                   {/* <UICheckbox isSelect={true} /> */}
                 </View>
                 <View className="cart-item">
-                  <Image className='goods-image' src={v.image}> 
+                  <Image className='goods-image' src={v.image}>
                   </Image>
                   <View className='goods-mask'>
                     <Text className='mask-text'>已卖光</Text>
@@ -95,22 +99,21 @@ export default class Index extends Component {
                   <Text className='goods-spec'>{v.specText}</Text>
                   <View className='goods-bottom'>
                     <Text className='goods-price'>￥{v.price}</Text>
-                    <Image style='width:21px;height:23px' src={require('./img/delete.png')} ></Image>                    
+                    <Image className='goods-delete' src={require('./img/delete.png')} ></Image>
                   </View>
                 </View>
               </View>
             })
-
           }
         </ScrollView>
 
         <View className='botton-bar'>
           <View className='goods-choose'>
-            <Checkbox checked={true} />
+            <UICheckbox isSelect={true} />
             <Text className='choose-text'>全选</Text>
           </View>
           <View className='buy-middle'>
-            <Text className='total-price'>合计:￥25.00</Text>
+            <Text className='total-price'>合计:￥{this._totalPrice()}</Text>
             <Text className='delivery-price'>配送费:￥5.00</Text>
           </View>
           <View className='buy-botton'>
@@ -119,5 +122,27 @@ export default class Index extends Component {
         </View>
       </View>
     )
+  }
+
+
+  _changeGoodsValue(value) {   
+    this.props.changeGoodsValue(3, value)
+  }
+
+
+  //商品总价
+  _totalPrice(){     
+     const { list } =this.props
+     let price = 0
+     list.map(item=>{
+       price += item.price
+     })     
+     return price.toFixed(2)     
+  }
+
+
+  //跳转到商品详情页面
+  _toProductList(id) {
+    Tools.goToProductDetail(id)
   }
 }
