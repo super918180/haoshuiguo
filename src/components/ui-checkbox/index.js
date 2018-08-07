@@ -20,6 +20,15 @@ export default class UICheckbox extends Component {
     ))
   }
 
+  //接收新的Props刷新
+  componentWillReceiveProps(nextProps){
+    if(nextProps.isSelect!=this.props.isSelect){
+      this.setState({
+        isSelect:nextProps.isSelect
+      })
+    }
+  }
+
   render() {
     const { square } = this.props
     let imgObj = {

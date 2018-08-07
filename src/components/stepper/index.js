@@ -27,9 +27,7 @@ export default class Stepper extends Component {
   setCurrentValue = (value) => {
     this.setState({
       currentValue: value,
-    })
-    this.props.onChange && this.props.onChange(value)
-
+    },()=>this.props.onChange(value))
   }
 
   changeValue = (type) => {
