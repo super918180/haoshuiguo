@@ -1,0 +1,73 @@
+@import '../../asset/css/theme.less';
+@import '../../asset/css/mixin.less';
+
+page {
+    background-color: #efefef;
+}
+
+.index{
+    position:relative; 
+    .coupon-container{
+        margin-left:32px;
+        margin-right: 28px;   
+        margin-top: 20px;    
+        height: 150px;
+        background-color: #ffffff;        
+        border-radius: 10px;           
+        display: flex;       
+        .coupon-left{
+            .flex-center;
+            width: 280px;               
+            border-top-left-radius: 6px;    
+            border-top-right-radius: 6px;       
+            background-color:#fc4c4e;                  
+            .left-text{
+              font-size: 54px;
+              color:  #fdff4f;              
+            }
+        }
+        .coupon-right{
+            .flex-center;
+             flex: 1;       
+             .right-text{
+                font-size: 30px;
+                color:#999999;    
+             }
+        }
+
+    }
+    .botton-bar{
+        position: fixed;
+        bottom: 0;
+        width: 746px;
+        height: 109px;
+        background-color: #ffffff;
+        display: flex;         
+        flex:1;    
+        .botton-left{
+          .flex-center;          
+           flex: 1;
+           &-text{
+            font-size: 30px;            
+           }
+        }
+        .botton-confirm{
+            .flex-center;
+            flex:0  0  261px;	       
+            background-color:@color-brand;
+            &-text{
+                font-size: 33px;
+                color:#ffffff;
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+

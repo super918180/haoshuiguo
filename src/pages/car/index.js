@@ -131,7 +131,7 @@ export default class Index extends Component {
   }
 
   //数量变化
-  _changeGoodsValue(id,obj,result){    
+  _changeGoodsValue(id,obj,result){  
     this.props.changeGoodsValue(id,result)
   }
 
