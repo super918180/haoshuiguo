@@ -13,7 +13,6 @@ import { user } from '../pages/user/redux'
 import { address } from '../pages/address/redux'
 import { addressEdit } from '../pages/address-edit/redux'
 import { order } from '../pages/order/redux'
-import { shoppingCartList } from '../pages/coupon/redux'
 
 const rootReducer = combineReducers({
   home,
