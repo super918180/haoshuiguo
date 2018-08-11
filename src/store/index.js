@@ -13,6 +13,7 @@ import { user } from '../pages/user/redux'
 import { address } from '../pages/address/redux'
 import { addressEdit } from '../pages/address-edit/redux'
 import { order } from '../pages/order/redux'
+import { orderConfirm } from '../pages/order-confirm/redux'
 
 const rootReducer = combineReducers({
   home,
@@ -25,7 +26,8 @@ const rootReducer = combineReducers({
   user,
   address,
   addressEdit,
-  order
+  order,
+  orderConfirm
 })
 
 const middlewares = [
