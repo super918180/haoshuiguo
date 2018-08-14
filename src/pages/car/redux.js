@@ -2,7 +2,7 @@ import Taro from '@tarojs/taro'
 import { getShoppingCarts } from './api'
 
 // Actions
-const UPDATE = 'SHOPPINGCART_LIST_UPDATE'
+const UPDATE = 'SHOPPING_CART_LIST_UPDATE'
 
 // Reducer
 const initState = {
@@ -55,7 +55,7 @@ export const shoppingCartListInit = (isRefresh) => async (dispatch, getState) =>
       invalid: data.invalidData
     }))
     Taro.hideLoading()
-  } __values
+  }
 }
 
 
