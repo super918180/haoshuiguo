@@ -5,6 +5,10 @@ import cls from 'classnames'
 import './index.less'
 
 export default class Tabs extends Component {
+  static defaultProps = {
+    data: []
+  }
+
   constructor() {
     super(...arguments)
     this.state = {

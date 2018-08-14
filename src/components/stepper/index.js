@@ -1,6 +1,5 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Input } from '@tarojs/components'
-import cls from 'classnames'
 import './index.less'
 
 export default class Stepper extends Component {

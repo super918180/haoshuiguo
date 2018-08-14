@@ -3,6 +3,10 @@ import { View, Image, Text } from '@tarojs/components'
 import './index.less'
 
 export default class ProductItem extends Component {
+  static defaultProps = {
+    data: []
+  }
+
   toDetailPage(value) {
     Taro.navigateTo({
       url: `/pages/product-detail/index?id=${value}`
@@ -10,7 +14,7 @@ export default class ProductItem extends Component {
   }
 
   render() {
-    const {data} = this.props
+    const { data } = this.props
     return (
       <View className='product-item'>
         {data.map((v, i) => (

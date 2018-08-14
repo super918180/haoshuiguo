@@ -4,11 +4,16 @@ import Tools from '../../../../utils/tools';
 import './index.less'
 
 export default class HomeRecommend extends Component {
+  static defaultProps = {
+    title: '',
+    data: []
+  }
+
   getMore(title) {
     Tools.goToProductList(title)
   }
 
-  getDetail(id){
+  getDetail(id) {
     Tools.goToProductDetail(id)
   }
 
