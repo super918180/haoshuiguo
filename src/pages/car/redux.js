@@ -62,7 +62,7 @@ export const shoppingCartListInit = (isRefresh) => async (dispatch, getState) =>
 //改变数量
 export const changeGoodsValue = (id, value) => (dispatch, getState) => {
   let { list } = getState().shoppingCartList
-  let newList = list.filter(v => v.shoppingCartId == id).map(item=>{
+  let newList = list.filter(v => v.id == id).map(item=>{
     item.number = value
     return item
   })
@@ -76,7 +76,7 @@ export const changeGoodsValue = (id, value) => (dispatch, getState) => {
 //改变选中状态
 export const toggleSelect = (id, checked) => (dispatch, getState) => {
   let { list } = getState().shoppingCartList
-  let newList = list.filter(v => v.shoppingCartId == id).map(item=>{
+  let newList = list.filter(v => v.id == id).map(item=>{
     item.checked = checked
     return item
   })

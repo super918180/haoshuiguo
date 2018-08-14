@@ -72,12 +72,12 @@ export default class Index extends Component {
                 {
                   init && list.length > 0 && list.map((v, i) => <View key={i} className='goods-container'>
                       <View className='goods-choose'>
-                        <UICheckbox isSelect={v.checked} onChange={this.toggleSelect.bind(this, v.shoppingCartId)} />
+                        <UICheckbox isSelect={v.checked} onChange={this.toggleSelect.bind(this, v.id)} />
                       </View>
                       <View className='cart-item'>
                         <Image
                           className='goods-image' src={v.image}
-                          onClick={this.toProductList.bind(this, v.shoppingCartId)}
+                          onClick={this.toProductList.bind(this, v.id)}
                         >
                         </Image>
                       </View>
@@ -87,7 +87,7 @@ export default class Index extends Component {
                         <View className='goods-bottom'>
                           <Text className='goods-price'>￥{v.price}</Text>
                           <Stepper
-                            onChange={this.changeGoodsValue.bind(this, v.shoppingCartId)}
+                            onChange={this.changeGoodsValue.bind(this, v.id)}
                             defaultValue={v.number}
                           />
                         </View>
@@ -133,7 +133,7 @@ export default class Index extends Component {
                   <Text className='total-price'>合计:￥{this.totalPrice()}</Text>
                   <Text className='delivery-price'>配送费:￥5.00</Text>
                 </View>
-                <View className='buy-botton'>
+                <View className='buy-botton' onClick={this.toOrderConfirm}>
                   <Text className='buy-text'>去结算</Text>
                 </View>
               </View>
@@ -144,7 +144,7 @@ export default class Index extends Component {
   }
 
   //数量变化
-  changeGoodsValue(id, obj, result) {
+  changeGoodsValue(id, result) {
     this.props.changeGoodsValue(id, result)
   }
 
@@ -161,11 +161,18 @@ export default class Index extends Component {
   //商品总价
   totalPrice() {
     const { list } = this.props
+    const selectList = list.filter(v => v.checked == true)
     let price = 0
-    list.map(item => {
-      price += item.price
+    selectList.map(item => {
+      price += item.price * parseInt(item.number, 10)
     })
     return price.toFixed(2)
+  }
+
+  toOrderConfirm() {
+    Taro.navigateTo({
+      url: '/pages/order-confirm/index'
+    })
   }
 
 

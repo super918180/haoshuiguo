@@ -11,8 +11,9 @@ import { orderConfirmInit } from './redux';
 
 import './index.less'
 
-const mapStateToProps = ({ orderConfirm }) => ({
+const mapStateToProps = ({ orderConfirm, shoppingCartList }) => ({
   ...orderConfirm,
+  list: shoppingCartList.list.filter(v => v.checked == true)
 })
 const mapActionsToProps = dispatch => bindActionCreators({
   orderConfirmInit,
@@ -56,7 +57,8 @@ export default class OrderConfirm extends Component {
   }
 
   render() {
-    const { init, address } = this.props
+    const { init, address, list } = this.props
+    console.log(list)
     return (
       <View>
         {
