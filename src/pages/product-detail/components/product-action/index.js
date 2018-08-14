@@ -1,7 +1,22 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Image, Text } from '@tarojs/components'
+import { bindActionCreators } from 'redux'
+import { connect } from '@tarojs/redux'
 import './index.less'
+import { productDetailBuy, } from "../../../car/redux";
 
+
+const mapStateToProps = ({ shoppingCartList }) => ({
+  ...shoppingCartList,
+})
+const mapActionsToProps = dispatch => bindActionCreators({
+  productDetailBuy,
+}, dispatch)
+
+@connect(
+  mapStateToProps,
+  mapActionsToProps,
+)
 export default class ProductAction extends Component {
   render() {
     return (
@@ -17,8 +32,26 @@ export default class ProductAction extends Component {
         </View>
 
         <View className='add-in-car'>加入购物车</View>
-        <View className='buy-now'>立即购买</View>
+        <View className='buy-now' onClick={this.buy}>立即购买</View>
       </View>
     )
+  }
+
+  buy = () => {
+    const { data } = this.props;
+    this.props.productDetailBuy([
+      {
+        checked: true,
+        id: data.id,
+        name: data.name,
+        image: data.image,
+        description: data.description,
+        price: data.price,
+        number: 1
+      }
+    ])
+    Taro.navigateTo({
+      url: '/pages/order-confirm/index'
+    })
   }
 }

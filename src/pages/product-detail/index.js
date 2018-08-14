@@ -70,7 +70,7 @@ export default class ProductDetail extends Component {
             <ProductNumber />
             <Space />
             <ProductIntroduce data={detail.introduce} />
-            <ProductAction />
+            <ProductAction data={detail} />
           </View>
         }
       </View>

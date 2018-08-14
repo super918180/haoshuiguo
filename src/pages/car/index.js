@@ -51,7 +51,7 @@ export default class Index extends Component {
 
   render() {
     const { init, list, invalid } = this.props
-    const checkedAll = list.length == list.filter(v => v.checked == true).length
+    const checkedAll = this.getSelect().length
     return (
       init && <View className='car vertical-center'>
         {
@@ -160,8 +160,7 @@ export default class Index extends Component {
 
   //商品总价
   totalPrice() {
-    const { list } = this.props
-    const selectList = list.filter(v => v.checked == true)
+    const selectList = this.getSelect()
     let price = 0
     selectList.map(item => {
       price += item.price * parseInt(item.number, 10)
@@ -170,9 +169,18 @@ export default class Index extends Component {
   }
 
   toOrderConfirm() {
-    Taro.navigateTo({
-      url: '/pages/order-confirm/index'
-    })
+    if (this.getSelect().length === 0) {
+      Taro.showToast({ title: '请至少选择一个商品', icon: 'none' })
+    } else {
+      Taro.navigateTo({
+        url: '/pages/order-confirm/index'
+      })
+    }
+  }
+
+  getSelect = () => {
+    const { list } = this.props
+    return list.filter(v => v.checked == true)
   }
 
 

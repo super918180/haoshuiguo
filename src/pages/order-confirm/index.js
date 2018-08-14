@@ -58,7 +58,7 @@ export default class OrderConfirm extends Component {
 
   render() {
     const { init, address, list } = this.props
-    console.log(list)
+    const selectList = list.filter(v => v.checked == true)
     return (
       <View>
         {
@@ -66,31 +66,20 @@ export default class OrderConfirm extends Component {
           <View className='order-confirm'>
             <OrderAddressSelect data={address} />
             <OrderListItem name='优惠券' image={require('./images/coupon.png')} />
-            <OrderProductList data={[{
-              "id": "001",
-              "name": "四川安岳柠檬",
-              "image": "https://www.fruitzj.com/uploads/allimg/180604/4-1P6041H315-50.jpg",
-              "subtitle": "口感香甜，甜度适中",
-              "description": "1份约1200g，合5.5元/斤",
-              "sealNumber": "245",
-              "price": "35.8",
-              "number": 5
-            }, {
-              "id": "001",
-              "name": "四川安岳柠檬",
-              "image": "https://www.fruitzj.com/uploads/allimg/180604/4-1P6041H315-50.jpg",
-              "subtitle": "口感香甜，甜度适中",
-              "description": "1份约1200g，合5.5元/斤",
-              "sealNumber": "245",
-              "price": "35.8",
-              "number": 5
-            }]}
-            />
-            <OrderPriceCalc total={20.00} coupon={5.00} freight={5.00} />
-            <OrderAction total={20.00} />
+            <OrderProductList data={selectList} />
+            <OrderPriceCalc total={this.getTotalPrice(selectList)} coupon={0.00} freight={0.00} />
+            <OrderAction total={this.getTotalPrice(selectList)} />
           </View>
         }
       </View>
     )
+  }
+
+  getTotalPrice(data) {
+    let price = 0
+    data.map(item => {
+      price += item.price * parseInt(item.number, 10)
+    })
+    return price.toFixed(2)
   }
 }
