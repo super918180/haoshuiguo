@@ -1,0 +1,44 @@
+@import '../../../asset/css/theme.less';
+@import '../../../asset/css/mixin.less';
+
+.order-product-item {
+  .item-body {
+    font-size: 26px;
+    color: #383838;
+    height: 235px;
+    .flex-center;
+    padding: 0 30px;
+    justify-content: start;
+    border-bottom: @border;
+    .item-body-left {
+      width: 172px;
+      height: 172px;
+    }
+    .item-body-right {
+      height: 180px;
+      width: 500px;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      margin-left: 20px;
+      .name {
+        color: #383838;
+      }
+      .description {
+        margin: 30px 0;
+        font-size: 22px;
+        color: #999999;
+      }
+      .price-and-number {
+        .flex-center;
+        justify-content: space-between;
+        .price {
+          color: #383838;
+        }
+        .number {
+          color: #656565;
+        }
+      }
+    }
+  }
+}

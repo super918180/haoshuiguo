@@ -13,19 +13,19 @@ const store = configStore()
 class App extends Component {
   config = {
     pages: [
-      'pages/order-confirm/index',
       'pages/index/index',
       'pages/product-detail/index',
       'pages/category/index',
       'pages/car/index',
-      'pages/user/index',      
+      'pages/user/index',
       'pages/order/index',
+      'pages/order-confirm/index',
       'pages/address/index',
       'pages/address-edit/index',
       'pages/product-list/index',
       'pages/search/index',
-      'pages/destination/index',     
-      'pages/coupon/index', 
+      'pages/destination/index',
+      'pages/coupon/index',
     ],
     window: {
       backgroundTextStyle: 'light',

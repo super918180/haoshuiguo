@@ -1,5 +1,6 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Image } from '@tarojs/components'
+import { View } from '@tarojs/components'
+import OrderProductItem from '../../../components/order-product-item'
 import './index.less'
 
 
@@ -25,16 +26,8 @@ export default class OrderItem extends Component {
           </View>
         </View>
         {data.list.map((v, i) => (
-          <View key={i} className='item-body'>
-            <Image className='item-body-left' src={v.image} />
-            <View className='item-body-right'>
-              <View className='name'>{v.name}</View>
-              <View className='description'>{v.description}</View>
-              <View className='price-and-number'>
-                <View className='price'>￥{v.price}</View>
-                <View className='number'>×{v.number}</View>
-              </View>
-            </View>
+          <View key={i}>
+            <OrderProductItem data={v} />
           </View>
         ))}
         <View className='item-footer'>

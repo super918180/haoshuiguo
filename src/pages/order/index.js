@@ -5,7 +5,7 @@ import { View } from '@tarojs/components'
 import Tabs from '../../components/tabs/index'
 import Space from '../../components/space/index'
 import { orderInit } from './redux';
-import OrderItem from './components/order-item';
+import OrderItem from './components/order-item/index';
 
 import './index.less'
 

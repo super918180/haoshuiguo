@@ -1,0 +1,33 @@
+@import '../../../../asset/css/theme.less';
+@import '../../../../asset/css/mixin.less';
+
+.order-action {
+  .flex-between;
+  height: 110px;
+  background-color: #fff;
+  padding-left: 30px;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  border-top: @border;
+  .action-left {
+    height: 100%;
+    .flex-start;
+    .action-left-label {
+      font-size: 28px;
+      color: #323232;
+    }
+    .action-left-value {
+      font-size: 34px;
+      color: #ff9000;
+    }
+  }
+  .action-right {
+    .flex-center;
+    height: 100%;
+    width: 265px;
+    background-color: @color-brand;
+    font-size: 34px;
+    color: #ffffff;
+  }
+}
