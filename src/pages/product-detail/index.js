@@ -26,7 +26,7 @@ const mapActionsToProps = dispatch => bindActionCreators({
 
 export default class ProductDetail extends Component {
   config = {
-    navigationBarTitleText: '搜索'
+    navigationBarTitleText: '商品详情'
   }
 
   constructor() {
