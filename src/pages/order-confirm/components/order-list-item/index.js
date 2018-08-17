@@ -13,9 +13,17 @@ export default class OrderListItem extends Component {
           <View className='left-text'>{name}</View>
         </View>
         <View className='list-item-right'>
-          <Image className='list-more' src={require('./images/right.png')} />
+          <Image className='list-more' src={require('./images/right.png')}
+            onClick={this.orderCoupon}
+          />
         </View>
       </View>
     )
+  }
+
+  orderCoupon() {
+    Taro.navigateTo({
+      url: '/pages/coupon/index'
+    })
   }
 }

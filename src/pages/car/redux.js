@@ -62,14 +62,25 @@ export const shoppingCartListInit = (isRefresh) => async (dispatch, getState) =>
 //改变数量
 export const changeGoodsValue = (id, value) => (dispatch, getState) => {
   let { list } = getState().shoppingCartList
-  let newList = list.filter(v => v.id == id).map(item => {
-    item.number = value
-    return item
-  })
-  //更新list
-  dispatch(shoppingCartListUpdate({
-    data: newList
-  }))
+  if (value == 0) {    
+    Taro.showModal({
+      title: '',
+      content: '确定删除该商品吗?',
+      success: function (res) {
+        if (res.confirm) {
+          let newList = list.filter(v => v.id == id).map(item => {
+            item.number = value
+            return item
+          })
+          //更新list
+          dispatch(shoppingCartListUpdate({
+            data: newList
+          }))
+          shoppingCartListInit()          
+        }
+      }
+    })
+  }
 }
 
 
@@ -99,7 +110,6 @@ export const toggleSelectAll = (checked) => (dispatch, getState) => {
 }
 
 //订单详情添加数据
-
 export const productDetailBuy = (data) => (dispatch) => {
   dispatch(shoppingCartListUpdate({
     list: data

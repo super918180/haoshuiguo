@@ -51,7 +51,7 @@ export default class Index extends Component {
 
   render() {
     const { init, list, invalid } = this.props
-    const checkedAll = this.getSelect().length
+    const checkedAll = this.getSelect().length==list.length    
     return (
       init && <View className='car vertical-center'>
         {
@@ -61,38 +61,42 @@ export default class Index extends Component {
                 <Image className='clock-image' src={require('./img/clock.png')} />
                 <Text className='clock-text'>全场满30元包邮</Text>
               </View>
-              <View className='cart-tip-container vertical-center'>
-                <View className='cart-tip vertical-center'>
-                  <View className='cart-tip-text'>全场满<Text className='tip-price'>￥30.00</Text>包运费，还差<Text
-                    className='tip-price'
-                  >￥10.00</Text>包邮</View>
+              {
+                this.totalPrice() < 30.00 &&
+                <View className='cart-tip-container vertical-center'>
+                  <View className='cart-tip vertical-center'>
+                    <View className='cart-tip-text'>全场满<Text className='tip-price'>￥30.00</Text>包运费，还差<Text
+                      className='tip-price'
+                    >￥{(30.00-this.totalPrice()).toFixed(2)}</Text>包邮</View>
+                  </View>
                 </View>
-              </View>
-              <ScrollView className='scroll-view'>
+              }
+              <ScrollView className='cart-scroll'>
                 {
-                  init && list.length > 0 && list.map((v, i) => <View key={i} className='goods-container'>
-                      <View className='goods-choose'>
-                        <UICheckbox isSelect={v.checked} onChange={this.toggleSelect.bind(this, v.id)} />
-                      </View>
-                      <View className='cart-item'>
-                        <Image
-                          className='goods-image' src={v.image}
-                          onClick={this.toProductList.bind(this, v.id)}
-                        >
-                        </Image>
-                      </View>
-                      <View className='goods-content'>
-                        <Text className='goods-name'>{v.name}}</Text>
-                        <Text className='goods-spec'>{v.specText}</Text>
-                        <View className='goods-bottom'>
-                          <Text className='goods-price'>￥{v.price}</Text>
-                          <Stepper
-                            onChange={this.changeGoodsValue.bind(this, v.id)}
-                            defaultValue={v.number}
-                          />
-                        </View>
+                  init && list.length > 0 && list.map((v, i) => v.number > 0 && <View key={i} className='goods-container'>
+                    <View className='goods-choose'>
+                      <UICheckbox isSelect={v.checked} onChange={this.toggleSelect.bind(this, v.id)} />
+                    </View>
+                    <View className='cart-item'>
+                      <Image
+                        className='goods-image' src={v.image}
+                        onClick={this.toProductList.bind(this, v.id)}
+                      >
+                      </Image>
+                    </View>
+                    <View className='goods-content'>
+                      <Text className='goods-name'>{v.name}}</Text>
+                      <Text className='goods-spec'>{v.specText}</Text>
+                      <View className='goods-bottom'>
+                        <Text className='goods-price'>￥{v.price}</Text>
+                        <Stepper
+                          min={0}
+                          onChange={this.changeGoodsValue.bind(this, v.id)}
+                          defaultValue={v.number}
+                        />
                       </View>
                     </View>
+                  </View>
                   )
                 }
                 {
@@ -131,7 +135,7 @@ export default class Index extends Component {
                 </View>
                 <View className='buy-middle'>
                   <Text className='total-price'>合计:￥{this.totalPrice()}</Text>
-                  <Text className='delivery-price'>配送费:￥5.00</Text>
+                  <Text className='delivery-price'>配送费:{this.totalPrice() > 30.00 ? '￥0.00' : '￥5.00'}</Text>
                 </View>
                 <View className='buy-botton' onClick={this.toOrderConfirm}>
                   <Text className='buy-text'>去结算</Text>
@@ -180,7 +184,7 @@ export default class Index extends Component {
 
   getSelect = () => {
     const { list } = this.props
-    return list.filter(v => v.checked == true)
+    return list.filter(v =>v.number>0 &&  v.checked == true)
   }
 
 
