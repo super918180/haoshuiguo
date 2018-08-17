@@ -184,7 +184,7 @@ export default class Index extends Component {
 
   getSelect = () => {
     const { list } = this.props
-    return list.filter(v =>v.number>0 &&  v.checked == true)
+    return list.filter( v=>v.checked == true)
   }
 
 
