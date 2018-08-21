@@ -4,8 +4,8 @@ import { View, Image, Text } from '@tarojs/components'
 import { connect } from '@tarojs/redux'
 import  Space  from '../../components/space/index'
 import { userInit } from './redux'
-import OrderBar from './components/order-bar'
-import ListItem from './components/list-item'
+import OrderBar from './components/order-bar/index'
+import ListItem from './components/list-item/index'
 import './index.less'
 
 const mapStateToProps = ({ user }) => ({

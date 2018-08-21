@@ -2,7 +2,7 @@ import Taro, { Component } from '@tarojs/taro'
 import { View, Button, Text, Image, ScrollView } from '@tarojs/components'
 import { connect } from '@tarojs/redux'
 import { bindActionCreators } from 'redux'
-import UICheckbox from '../../components/ui-checkbox'
+import UICheckbox from '../../components/ui-checkbox/index'
 import './index.less'
 
 

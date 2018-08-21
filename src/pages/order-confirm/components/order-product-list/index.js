@@ -1,6 +1,6 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Image } from '@tarojs/components'
-import OrderProductItem from '../../../components/order-product-item'
+import OrderProductItem from '../../../components/order-product-item/index'
 import './index.less'
 
 export default class OrderListItem extends Component {
